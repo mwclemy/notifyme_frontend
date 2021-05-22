@@ -42,7 +42,8 @@ Notifyme is a personal finance helper that sends an SMS everytime a person spend
 5. Notifly the user via SMS when his/her spendings exceed X amount
 6. Allow the user to set the threshold spending amount.
 
-## Stretch Goals
+## Stretch Goals 
+1. To save daily transactions that exceeded the threshold amount set by the user with highlighted on which that happened.
 
 
 
