@@ -5,26 +5,4 @@
   text-align: center;
 }
 
-.navBar {
-  display: flex;
-  align-self: flex-start;
-  justify-content: space-between;
-  border: 1px solid #ccc;
-  width: 100%;
-  margin-bottom: 100px;
-}
-
-.navBar img {
-  height: 90px;
-  width: 150px;
-}
-
-.navBar ul {
-  list-style-type: none;
-}
-
-.navBar li {
-  display: inline;
-  margin-right: 10px;
-}
 

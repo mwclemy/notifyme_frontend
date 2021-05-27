@@ -29,7 +29,7 @@ const AppProvider = (props) => {
                     user: action.state.user,
                 };
             case "SET_USER":
-                localStorage.setItem("userId", JSON.stringify(action.state.userId));
+                localStorage.setItem("userId", action.state.userId);
                 return {
                     ...state,
                     user: action.state.user,

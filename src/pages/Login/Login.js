@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react'
 import axios from 'axios'
-import { Context } from "../context";
+import { Context } from "../../context";
+import styles from './Login.module.scss'
 const Login = () => {
     const [phone, setPhone] = useState('')
     const [password, setPassword] = useState('')
@@ -27,23 +28,21 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <h2>Log into your accout!</h2>
+        <div className={styles.form}>
+            <h2>Login</h2>
 
             { error &&
                 <div className="error">{error}</div>}
 
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="login-phone">Phone:</label>
-                    <input id="login-phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                <div className={styles.formGroup}>
+                    <input placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
                 </div>
-                <div>
-                    <label htmlFor="signup-password">Password:</label>
-                    <input id="signup-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <div className={styles.formGroup}>
+                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <div>
-                    <input type="submit" value="Log in!" ></input>
+                <div className={styles.formGroup}>
+                    <input className={styles.submitButton} type="submit" value="Login" ></input>
                 </div>
             </form>
         </div>

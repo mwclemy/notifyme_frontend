@@ -1,0 +1,23 @@
+.navBar {
+    display: flex;
+    align-self: flex-start;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 100px;
+  }
+  
+  .navBar ul {
+    list-style-type: none;
+  }
+  
+  .navBar li {
+    display: inline;
+    margin-right: 10px;
+  }
+
+  .logo {
+    margin: 20px;
+    font-size: 2.5rem;
+    letter-spacing: 0.3rem;
+  }

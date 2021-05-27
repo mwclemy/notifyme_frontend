@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react'
 import axios from 'axios'
-import { Context } from "../context";
+import { Context } from "../../context";
+import styles from './Signup.module.scss'
 const Signup = () => {
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
@@ -28,27 +29,24 @@ const Signup = () => {
     }
 
     return (
-        <div>
-            <h2>Sign up for an accout!</h2>
+        <div className={styles.form}>
+            <h2>Signup</h2>
 
             { error &&
                 <div className="error">{error}</div>}
 
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="signup-name">Name:</label>
-                    <input id="signup-name" value={name} onChange={(e) => setName(e.target.value)} />
+                <div className={styles.formGroup}>
+                    <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
                 </div>
-                <div>
-                    <label htmlFor="signup-phone">Phone:</label>
-                    <input id="signup-phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                <div className={styles.formGroup}>
+                    <input id="signup-phone" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
                 </div>
-                <div>
-                    <label htmlFor="signup-password">Password:</label>
-                    <input id="signup-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <div className={styles.formGroup}>
+                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <div>
-                    <input type="submit" value="Sign up!" ></input>
+                <div className={styles.formGroup}>
+                    <input className={styles.submitButton} type="submit" value="Signup" ></input>
                 </div>
             </form>
         </div>

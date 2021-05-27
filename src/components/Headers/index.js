@@ -26,10 +26,10 @@ const Header = () => {
       {!linkSuccess ? (
         <>
           <h4 className={styles.subtitle}>
-            Link your account
+            Connect your account
           </h4>
           <p className={styles.introPar}>
-            Clink the button below to link your bank account.
+            Clink the button below to connect your bank account.
           </p>
           {/* message if backend is not running and there is no link token */}
           {!backend ? (
@@ -70,7 +70,7 @@ const Header = () => {
         <>
           {isItemAccess ? (
             <h4 className={styles.subtitle}>
-              Congrats! By linking an account.
+              Congrats! By connecting an account.
             </h4>
           ) : (
             <h4 className={styles.subtitle}>

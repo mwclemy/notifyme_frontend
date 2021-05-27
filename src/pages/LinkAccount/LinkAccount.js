@@ -1,7 +1,8 @@
 import { useEffect, useContext, useCallback } from "react";
-import { Context } from "../context";
-import Header from "../components/Headers";
+import { Context } from "../../context";
+import Header from "../../components/Headers";
 import InlineLink from "plaid-threads/InlineLink";
+import styles from "./LinkAccount.module.scss";
 const LinkAccount = (props) => {
     const { linkSuccess, isItemAccess, dispatch } = useContext(Context);
 
@@ -75,7 +76,7 @@ const LinkAccount = (props) => {
     }, [dispatch, generateToken, getInfo]);
     return (
         <div>
-            <div>
+            <div className={styles.container}>
                 <Header />
                 {linkSuccess && isItemAccess && (
                     <div>

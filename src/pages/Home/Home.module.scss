@@ -1,0 +1,35 @@
+$threads-font-path: "~plaid-threads/fonts";
+@import "~plaid-threads/scss/typography";
+@import "~plaid-threads/scss/variables";
+
+* {
+  box-sizing: border-box;
+}
+.home {
+    min-width: 150 * $unit;
+    max-width: 84 * $unit;
+    margin: 0 auto;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+.home p {
+    text-align: start;
+    margin: 10px 0 10px 40px;
+    font-size: 2.5em;
+}
+
+.home p:nth-of-type(2) {
+    font-size: 1.5em;
+}
+  
+.footer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: auto;
+}
+
+.heart {
+    color: red;
+}
+  

@@ -1,0 +1,36 @@
+$threads-font-path: "~plaid-threads/fonts";
+@import "~plaid-threads/scss/typography";
+@import "~plaid-threads/scss/variables";
+
+* {
+    box-sizing: border-box;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 70 * $unit;
+    max-width: 84 * $unit;
+    margin: 0 auto;
+}
+
+.formGroup {
+    margin: 20px 0;
+}
+
+.formGroup input {
+    padding: .8em;
+    width: 300px;
+}
+
+.submitButton {
+    color: white;
+    background-color:black;
+    border: 1.5px solid black;
+    cursor: pointer;
+}
+.submitButton:focus {
+    outline: none;
+}

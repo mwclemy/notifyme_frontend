@@ -1,0 +1,23 @@
+$threads-font-path: "~plaid-threads/fonts";
+@import "~plaid-threads/scss/typography";
+@import "~plaid-threads/scss/variables";
+
+* {
+  box-sizing: border-box;
+}
+
+table {
+    min-width: 70 * $unit;
+    max-width: 84 * $unit;
+    margin: 0 auto;
+    letter-spacing: 1px;
+}
+
+td,
+th {
+    padding: 5px 25px;
+}
+
+td {
+    text-align: center;
+}

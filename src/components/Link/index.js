@@ -70,7 +70,7 @@ const Link = () => {
 
   return (
     <Button type="button" large onClick={() => open()} disabled={!ready}>
-      Launch Link
+      Connect Account
     </Button>
   );
 };
