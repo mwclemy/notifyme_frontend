@@ -46,16 +46,18 @@ const Profile = () => {
             <h4>Connected Accounts</h4>
             { error &&
                 <div className="error">{error}</div>}
-            { connectedAccounts.length !== 0 ?
+            { connectedAccounts.length !== 0 &&
                 <div className={styles.accounts}>
                     {connectedAccounts.map(account => {
                         return <p key={account.institution_id}>{account.name}</p>
                     })}
                 </div>
-                :
+            }
+
+            {connectedAccounts.length === 0 && !loading && !error &&
                 <div>
                     No account connected yet. <br />
-                    You can connect one <Link to="/connect-account">here</Link>
+                     You can connect one <Link to="/connect-account">here</Link>
                 </div>
             }
             {loading && <Spinner />}

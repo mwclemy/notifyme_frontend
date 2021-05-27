@@ -70,7 +70,7 @@ const Header = () => {
         <>
           {isItemAccess ? (
             <h4 className={styles.subtitle}>
-              Congrats! By connecting an account.
+              Congrats! For connecting your account.
             </h4>
           ) : (
             <h4 className={styles.subtitle}>

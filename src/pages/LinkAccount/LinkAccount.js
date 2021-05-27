@@ -82,7 +82,7 @@ const LinkAccount = () => {
                     <div>
                         <p>
                             See your
-                            <Link to="/transactions">transactions.</Link>
+                            <Link to="/transactions"> transactions.</Link>
                         </p>
                     </div>
                 )}

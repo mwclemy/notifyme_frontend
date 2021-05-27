@@ -33,7 +33,7 @@ const Transactions = () => {
     return (<div className={styles.container}>
         { error &&
             <div className="error">{error}</div>}
-        {transactions.length !== 0 ?
+        {transactions.length !== 0 &&
             <table>
                 <thead>
                     <tr>
@@ -58,12 +58,13 @@ const Transactions = () => {
                     })}
                 </tbody>
             </table>
-            :
+        }
+
+        {transactions.length === 0 && !loading && !error &&
             <div>
                 No transactions yet.
             </div>
         }
-
         {loading && <Spinner />}
     </div >)
 
