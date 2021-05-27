@@ -7,15 +7,19 @@ const Profile = () => {
     const { user } = useContext(Context);
     const [connectedAccounts, setConnectedAccounts] = useState([])
     const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
     const getConnectedAccounts = async () => {
         try {
+            setLoading(true)
             const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/institutions`, {
                 headers: {
                     Authorization: localStorage.getItem('userId')
                 }
             })
+            setLoading(false)
             setConnectedAccounts(response.data.institutions);
         } catch (error) {
+            setLoading(false)
             if (error.response) {
                 setError(error.response.message)
                 alert(error.response.message)
@@ -39,12 +43,15 @@ const Profile = () => {
                 Threshold: ${user.threshold_amount}
             </div>
             <h4>Connected Accounts</h4>
-            { connectedAccounts.length === 0 && !error ? <Spinner /> :
+            { error &&
+                <div className="error">{error}</div>}
+            { connectedAccounts.length !== 0 &&
                 <div className={styles.accounts}>
                     {connectedAccounts.map(account => {
                         return <p key={account.institution_id}>{account.name}</p>
                     })}
                 </div>}
+            {loading && <Spinner />}
         </div>
     )
 }

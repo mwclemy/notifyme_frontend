@@ -6,16 +6,20 @@ const Transactions = () => {
 
     const [transactions, setTransactions] = useState([])
     const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
     const getTransactions = async () => {
         try {
+            setLoading(true)
             const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/transactions`, {
                 headers: {
                     Authorization: localStorage.getItem('userId')
                 }
             })
             setTransactions(response.data.transactions);
+            setLoading(false)
         } catch (error) {
             if (error.response) {
+                setLoading(false)
                 setError(error.response.message)
                 alert(error.response.message)
             }
@@ -27,7 +31,9 @@ const Transactions = () => {
     }, [])
 
     return (<div>
-        {transactions.length === 0 && !error ? <Spinner /> :
+        { error &&
+            <div className="error">{error}</div>}
+        {transactions.length !== 0 &&
             <table className={styles.container}>
                 <thead>
                     <tr>
@@ -53,6 +59,8 @@ const Transactions = () => {
                 </tbody>
             </table>
         }
+
+        {loading && <Spinner />}
     </div >)
 
 }
