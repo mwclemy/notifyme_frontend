@@ -5,6 +5,7 @@ import Spinner from '../../components/Spinner/Spinner'
 const Transactions = () => {
 
     const [transactions, setTransactions] = useState([])
+    const [error, setError] = useState('')
     const getTransactions = async () => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/transactions`, {
@@ -15,6 +16,7 @@ const Transactions = () => {
             setTransactions(response.data.transactions);
         } catch (error) {
             if (error.response) {
+                setError(error.response.message)
                 alert(error.response.message)
             }
         }
@@ -25,7 +27,7 @@ const Transactions = () => {
     }, [])
 
     return (<div>
-        {transactions.length === 0 ? <Spinner /> :
+        {transactions.length === 0 && !error ? <Spinner /> :
             <table className={styles.container}>
                 <thead>
                     <tr>

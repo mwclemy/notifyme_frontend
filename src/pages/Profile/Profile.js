@@ -6,7 +6,7 @@ import Spinner from '../../components/Spinner/Spinner'
 const Profile = () => {
     const { user } = useContext(Context);
     const [connectedAccounts, setConnectedAccounts] = useState([])
-
+    const [error, setError] = useState('')
     const getConnectedAccounts = async () => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/institutions`, {
@@ -17,6 +17,7 @@ const Profile = () => {
             setConnectedAccounts(response.data.institutions);
         } catch (error) {
             if (error.response) {
+                setError(error.response.message)
                 alert(error.response.message)
             }
         }
@@ -38,7 +39,7 @@ const Profile = () => {
                 Threshold: ${user.threshold_amount}
             </div>
             <h4>Connected Accounts</h4>
-            { connectedAccounts.length === 0 ? <Spinner /> :
+            { connectedAccounts.length === 0 && !error ? <Spinner /> :
                 <div className={styles.accounts}>
                     {connectedAccounts.map(account => {
                         return <p key={account.institution_id}>{account.name}</p>
