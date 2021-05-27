@@ -30,11 +30,11 @@ const Transactions = () => {
         getTransactions()
     }, [])
 
-    return (<div>
+    return (<div className={styles.container}>
         { error &&
             <div className="error">{error}</div>}
         {transactions.length !== 0 ?
-            <table className={styles.container}>
+            <table>
                 <thead>
                     <tr>
                         <th scope="col">Date</th>

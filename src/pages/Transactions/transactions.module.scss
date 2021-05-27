@@ -6,6 +6,11 @@ $threads-font-path: "~plaid-threads/fonts";
   box-sizing: border-box;
 }
 
+.container {
+    text-align: center;
+    margin: 0 auto;
+}
+
 table {
     min-width: 70 * $unit;
     max-width: 84 * $unit;

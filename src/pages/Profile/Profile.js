@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import { Context } from "../../context";
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 import styles from "./profile.module.scss";
 import Spinner from '../../components/Spinner/Spinner'
@@ -53,7 +54,8 @@ const Profile = () => {
                 </div>
                 :
                 <div>
-                    No account connected yet.
+                    No account connected yet. <br />
+                    You can connect one <Link to="/connect-account">here</Link>
                 </div>
             }
             {loading && <Spinner />}

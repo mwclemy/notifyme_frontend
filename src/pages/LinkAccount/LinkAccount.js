@@ -1,9 +1,9 @@
 import { useEffect, useContext, useCallback } from "react";
 import { Context } from "../../context";
+import { Link } from 'react-router-dom'
 import Header from "../../components/Headers";
-import InlineLink from "plaid-threads/InlineLink";
 import styles from "./LinkAccount.module.scss";
-const LinkAccount = (props) => {
+const LinkAccount = () => {
     const { linkSuccess, isItemAccess, dispatch } = useContext(Context);
 
     const getInfo = useCallback(async () => {
@@ -81,14 +81,8 @@ const LinkAccount = (props) => {
                 {linkSuccess && isItemAccess && (
                     <div>
                         <p>
-                            See your{" "}
-                            <InlineLink
-                                href="/profile"
-                                target="_blank"
-                            >
-                                transactions
-                        </InlineLink>
-                        .
+                            See your
+                            <Link to="/transactions">transactions.</Link>
                         </p>
                     </div>
                 )}
