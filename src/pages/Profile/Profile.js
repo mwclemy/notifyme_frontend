@@ -51,8 +51,7 @@ const Profile = () => {
             });
         } catch (error) {
             if (error.response) {
-                setError(error.response.message)
-                alert(error.response.message)
+                setError(error.response.data.message)
             }
         }
     }

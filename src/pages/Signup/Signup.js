@@ -10,7 +10,6 @@ const Signup = () => {
     const { dispatch } = useContext(Context);
     const handleSubmit = (e) => {
         e.preventDefault()
-        setError('')
         axios.post(`${process.env.REACT_APP_BACKEND_URL}/users`, {
             name, phone, password
         })
@@ -25,8 +24,7 @@ const Signup = () => {
             })
             .catch((error) => {
                 if (error.response) {
-                    setError(error.response.message)
-                    alert(error.response.message)
+                    setError(error.response.data.message)
                 }
             })
     }

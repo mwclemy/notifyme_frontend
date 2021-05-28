@@ -41,7 +41,7 @@ function App() {
 
       <Route path="/signup" render={(routeInfo) => {
         if (user.id) {
-          return <Redirect to="/profile" />
+          return <Redirect to="/transactions" />
         } else {
           return <Signup />
         }
@@ -49,7 +49,7 @@ function App() {
 
       <Route path="/login" render={(routeInfo) => {
         if (user.id) {
-          return <Redirect to="/profile" />
+          return <Redirect to="/transactions" />
         } else {
           return <Login />
         }

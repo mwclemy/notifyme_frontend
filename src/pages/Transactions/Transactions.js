@@ -20,8 +20,7 @@ const Transactions = () => {
         } catch (error) {
             if (error.response) {
                 setLoading(false)
-                setError(error.response.message)
-                alert(error.response.message)
+                setError(error.response.data.message)
             }
         }
 
