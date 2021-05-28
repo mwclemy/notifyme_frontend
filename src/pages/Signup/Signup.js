@@ -37,13 +37,13 @@ const Signup = () => {
 
             <form onSubmit={handleSubmit}>
                 <div className={styles.formGroup}>
-                    <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+                    <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
                 </div>
                 <div className={styles.formGroup}>
-                    <input id="signup-phone" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                    <input id="signup-phone" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} required />
                 </div>
                 <div className={styles.formGroup}>
-                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
                 <div className={styles.formGroup}>
                     <input className={styles.submitButton} type="submit" value="Signup" ></input>

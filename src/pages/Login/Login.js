@@ -36,10 +36,10 @@ const Login = () => {
 
             <form onSubmit={handleSubmit}>
                 <div className={styles.formGroup}>
-                    <input placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                    <input placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} required />
                 </div>
                 <div className={styles.formGroup}>
-                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
                 <div className={styles.formGroup}>
                     <input className={styles.submitButton} type="submit" value="Login" ></input>

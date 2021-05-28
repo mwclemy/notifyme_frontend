@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom'
 import axios from 'axios';
 import styles from "./profile.module.scss";
 import Spinner from '../../components/Spinner/Spinner'
+import Modal from '../../components/Modal/Modal';
 const Profile = () => {
-    const { user } = useContext(Context);
+    const { user, dispatch } = useContext(Context);
     const [connectedAccounts, setConnectedAccounts] = useState([])
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+    const [showModal, setShowModal] = useState(false)
+    const [amount, setAmount] = useState('')
     const getConnectedAccounts = async () => {
         try {
             setLoading(true)
@@ -28,6 +31,32 @@ const Profile = () => {
         }
     }
 
+    const changeAmountHandler = async (e) => {
+        e.preventDefault()
+        try {
+            const response = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/users/update_threshold_amount`, {
+                threshold_amount: amount
+            }, {
+                headers: {
+                    Authorization: localStorage.getItem('userId')
+                }
+            })
+            setShowModal(false)
+            dispatch({
+                type: "SET_USER",
+                state: {
+                    user: response.data.user,
+                    userId: localStorage.getItem('userId')
+                },
+            });
+        } catch (error) {
+            if (error.response) {
+                setError(error.response.message)
+                alert(error.response.message)
+            }
+        }
+    }
+
     useEffect(() => {
         getConnectedAccounts()
     }, [])
@@ -40,7 +69,7 @@ const Profile = () => {
             <div className={styles.profile}>
                 Phone: {user.phone}
             </div>
-            <div className={styles.profile}>
+            <div className={styles.profile} onClick={() => setShowModal(true)}>
                 Threshold: ${user.threshold_amount}
             </div>
             <h4>Connected Accounts</h4>
@@ -61,6 +90,22 @@ const Profile = () => {
                 </div>
             }
             {loading && <Spinner />}
+            <Modal show={showModal}>
+                <div>
+                    <h5>Change threshold amount</h5>
+                    <p>From: ${user.threshold_amount}</p>
+                    <form onSubmit={changeAmountHandler}>
+                        <p>To: $<input type="number"
+                            name="amount"
+                            value={amount} onChange={(e) => setAmount(e.target.value)} required /></p>
+                        <p>
+                            <button onClick={() => setShowModal(false)}>Close</button>
+                            <button>Save</button>
+                        </p>
+
+                    </form>
+                </div>
+            </Modal>
         </div>
     )
 }
