@@ -12,6 +12,7 @@ const Profile = () => {
     const [loading, setLoading] = useState(false)
     const [showModal, setShowModal] = useState(false)
     const [amount, setAmount] = useState('')
+    const [success, setSuccess] = useState(false)
     const getConnectedAccounts = async () => {
         try {
             setLoading(true)
@@ -24,6 +25,26 @@ const Profile = () => {
             setConnectedAccounts(response.data.institutions);
         } catch (error) {
             setLoading(false)
+            if (error.response) {
+                setError(error.response.message)
+                alert(error.response.message)
+            }
+        }
+    }
+
+    const sendSummary = async () => {
+        try {
+            setLoading(true)
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/send_notification`, {}, {
+                headers: {
+                    Authorization: localStorage.getItem('userId')
+                }
+            })
+            setLoading(false)
+            setSuccess(true);
+        } catch (error) {
+            setLoading(false)
+            setSuccess(false);
             if (error.response) {
                 setError(error.response.message)
                 alert(error.response.message)
@@ -71,6 +92,11 @@ const Profile = () => {
             <div className={styles.profile} onClick={() => setShowModal(true)}>
                 Threshold: ${user.threshold_amount}
             </div>
+            {!success ? <div className={styles.profile}>
+                Click this button to get expenses summary via SMS<button style={{ cursor: 'pointer' }} onClick={sendSummary}>Get Summary</button>
+            </div > : <div className={styles.profile}>
+                An SMS has been sent to your phone.
+            </div>}
             <h4>Connected Accounts</h4>
             { error &&
                 <div className="error">{error}</div>}
