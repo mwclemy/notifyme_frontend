@@ -23,8 +23,11 @@ const Signup = () => {
                     },
                 });
             })
-            .catch((err) => {
-                setError(err.response.data.message)
+            .catch((error) => {
+                if (error.response) {
+                    setError(error.response.message)
+                    alert(error.response.message)
+                }
             })
     }
 
